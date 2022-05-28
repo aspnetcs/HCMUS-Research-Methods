@@ -21,6 +21,15 @@ Validation
 
 Our experiment uses Tr01, Tr10, Ts01 for training, Va01 for validation and Ts11 for testing with total 2178 pages (~26.33% of original dataset) and approximate ratio 4.47 : 1.16 : 1. The reason for this small subset is for evaluating the ability of model on small sets, and the performance it gives (F1-score) through time (minutes).
 
-**Implement details**: Our baseline model is `Faster RCNN` with `Resnet50` as backbone. We've trained on kaggle with 4 cores CPU, 12GB RAM and 1 Nvidia Tesla P100 GPU[\[*\]](https://www.kaggle.com/docs/notebooks). The image is resized to 1447x2048 with the same ratio. The size of region crops from image is 1200x1120 to fit the limitation of machine. It's also flipped and padded for data augmentation. For the feature aggregation, we use FPN (2-6). Loss function for classifier is `Cross Entropy Loss` and for bounding box is `L1 Loss`. Test images are resize to 1583x2048 due to distribution of test dataset, flip augmentation is also applied. For post processing, Non-Maximum Suppression (NMS) with 0.5 IoU threshold to remove redundant boxes. All models are trained based on MMDetection toolbox and config given by [Yuxiang Zhong](https://github.com/Yuxiang1995/ICDAR2021_MFD/blob/main/configs/_base_/models/faster_rcnn_r50_fpn.py).
+**Implement details**: Our baseline model is `Faster RCNN` with `Resnet50` as backbone. We've trained on kaggle with 4 cores CPU, 12GB RAM and 1 Nvidia Tesla P100 GPU[\[*\]](https://www.kaggle.com/docs/notebooks). The image is resized to 1447x2048 with the same ratio. The size of region crops from image is 1200x1120 to fit the limitation of machine. It's also flipped and padded for data augmentation. For the feature aggregation, we use FPN (2-6). Loss function for classifier is `Cross Entropy Loss` and for bounding box is `L1 Loss`. Test images are resize to 1583x2048 due to distribution of test dataset, flip augmentation is also applied. For post processing, Non-Maximum Suppression (NMS) with 0.5 IoU threshold to remove redundant boxes. All models are trained based on MMDetection toolbox and config given by [Yuxiang Zhong](https://github.com/Yuxiang1995/ICDAR2021_MFD/blob/main/configs/_base_/models/faster_rcnn_r50_fpn.py). Optimizer for this baseline model is Stochastic Gradient Descent (SGD) with learning rate 0.02.
 
+**Remarks**: We've tested on 3 configs: Faster RCNN with schedule 1x (12 epochs), [Dynamic RCNN](https://github.com/hkzhang95/DynamicRCNN) with schedule 1x (12 epochs) to check if it's better than the faster one and Faster RCNN with schedule 2x (24 epochs) to check if the model is underfit with low epochs.
 
+Faster RCNN with schedule 1x
+![Faster RCNN with schedule 1x](./figures/loss/v2_1x.png)
+
+Dynamic RCNN with schedule 1x
+![Dynamic RCNN with schedule 1x](./figures/loss/v5_1x.png)
+
+Faster RCNN with schedule 2x
+![Faster RCNN with schedule 2x](./figures/loss/v2_2x.png)
