@@ -1,0 +1,40 @@
+In this section, we will describe the implementation of our mathematical formula detection system and dataset in detail.
+\subsection{Dataset}
+Our data is from the \href{https://zenodo.org/record/4757865}{IBEM dataset}. This originally comprises $600$ documents, with $8273$ pages in total. Those documents are parsed from mathematical papers, then each page is annotated with a bounding box of 2 types: isolated and embedded. The dataset is then split into various sets for ICDAR 2021 Competition on Mathematical Formula Detection, including Training, Test, and Validation sets. \\
+\textbf{Training}
+\begin{itemize}
+\item Tr00: $4082$ pages.
+\item Tr01: $760$ pages.
+\item Tr10: $329$ pages.
+\end{itemize}
+\textbf{Test}
+\begin{itemize}
+\item Ts00: $736$ pages.
+\item Ts01: $380$ pages.
+\item Ts10: $699$ pages.
+\item Ts11: $329$ pages.
+\end{itemize}
+\textbf{Validation}
+\begin{itemize}
+\item Va00: $577$ pages.
+\item Va01: $380$ pages.
+\end{itemize}
+Our experiment uses Tr01, Tr10, Ts01 for training, Va01 for validation, and Ts11 for testing with $2178$ pages in total ($ \sim 26.33\% $ of the original dataset), and an approximate ratio of $4.47:1.16:1.$ The reason for this small subset is for the purpose of evaluating the ability of the model on small subsets, and the performance it gives (F1-score) through time (minutes).
+\subsection{Implementation Details}
+Our baseline model is Faster R-CNN with ResNet50 as the backbone. We have trained on Kaggle with a 4-core CPU, 12GB RAM, and a NVIDIA Tesla P100 GPU \footnote{\url{https://www.kaggle.com/docs/notebooks}}. The images are resized to $1447 \times 2048$ with the same ratio. The size of the region crops from the image is $1200 \times 1120$ to fit the limitation of the machine. They are also flipped and padded for data augmentation. For the feature aggregation, we use FPN (2-6). The loss function for the classifier is Cross-Entropy Loss and for the bouding box is L1 Loss. Test images are resized to $1583 \times 2048$ due to the distribution of the test dataset, flip augmentation is also applied. For post-processing, Non-Maximum Suppression (NMS) with $0.5$ IoU threshold to remove redundant boxes. All models are trained based on the MMDetection toolbox and config given by \href{https://github.com/Yuxiang1995/ICDAR2021_MFD/blob/main/configs/_base_/models/faster_rcnn_r50_fpn.py}{Yuxiang Zhong}. The optimizer for this baseline is Stochastic Gradient Descent (SGD) with a learning rate of $0.02.$  
+\subsection{Remarks}
+We have tested on 3 configs: Faster R-CNN with schedule 1x ($12$ epochs), \href{https://github.com/hkzhang95/DynamicRCNN}{Dynamic R-CNN} with schedule 1x ($12$ epochs) to check if it is better than the faster one and Faster R-CNN with schedule 2x ($24$ epochs) to check if the model is underfitting with low epochs. 
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.7]{loss/v2_1x}}
+\caption{Faster R-CNN with schedule 1x}
+\end{figure}
+
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.7]{loss/v5_1x}}
+\caption{Dynamic R-CNN with schedule 1x}
+\end{figure}
+
+\begin{figure}[H]
+\centering{\includegraphics[scale=0.7]{loss/v2_2x}}
+\caption{Faster R-CNN with schedule 2x}
+\end{figure}

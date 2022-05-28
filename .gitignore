@@ -4,3 +4,10 @@ paper/main.dvi
 paper/main.log
 paper/main.tex.bak
 paper/main.synctex.gz
+paper/experiments.bbl
+paper/experiments.blg
+paper/experiments.log
+paper/experiments.tex.bak
+paper/main.bcf
+paper/main.out
+paper/main.run.xml
