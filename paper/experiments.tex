@@ -54,3 +54,4 @@ The F1-score gained from the model is as follow.
 \centering{\includegraphics[scale=0.45]{f1-score/embedded}}
 \caption{F1-score with embedded bounding box}
 \end{figure}
+It can be seen from the graphs that on the whole system, with the same schedule 1x, the F1-scores given by the Faster R-CNN model are higher than the one by Dynamic R-CNN if we use the same number of epochs, except in the case of $5$ epochs. The difference gets higher when we increase the number of epochs. Compared to the scores by Faster R-CNN with schedule 2x ($24$ epochs), although it gives a lower percentage when trained with a small number of epochs, the score becomes increasing to around $90\%$. 
