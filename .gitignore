@@ -12,3 +12,6 @@ paper/main.bcf
 paper/main.out
 paper/main.run.xml
 paper/refs.tex.bak
+paper/main.blg
+paper/main.bbl
+paper/method.tex.bak
