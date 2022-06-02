@@ -1,3 +1,4 @@
+\section{Experiments}
 In this section, we will describe the implementation of our mathematical formula detection system and dataset in detail.
 \subsection{Dataset}
 Our data is from the \href{https://zenodo.org/record/4757865}{IBEM dataset}. This originally comprises $600$ documents, with $8273$ pages in total. Those documents are parsed from mathematical papers, then each page is annotated with a bounding box of 2 types: isolated and embedded. The dataset is then split into various sets for ICDAR 2021 Competition on Mathematical Formula Detection, including Training, Test, and Validation sets. \\
@@ -42,17 +43,17 @@ The results are given in the figures below.
 
 The F1-score gained from the model is as follow.
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.45]{f1-score/whole}}
+\centering{\includegraphics[scale=0.4]{f1-score/whole}}
 \caption{F1-score on whole system}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.45]{f1-score/isolated}}
+\centering{\includegraphics[scale=0.4]{f1-score/isolated}}
 \caption{F1-score with isolated bounding box}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.45]{f1-score/embedded}}
+\centering{\includegraphics[scale=0.4]{f1-score/embedded}}
 \caption{F1-score with embedded bounding box}
 \end{figure}
 It can be seen from the graphs that on the whole system, with the same schedule 1x, the F1-scores given by the Faster R-CNN model are higher than the one by Dynamic R-CNN if we use the same number of epochs, except in the case of $5$ epochs. The difference gets higher when we increase the number of epochs. Compared to the scores by Faster R-CNN with schedule 2x ($24$ epochs), although it gives a lower percentage when trained with a small number of epochs, the score becomes increasing to around $90\%$. Moreover, on the isolated bounding box, the Faster R-CNN model shows its benefit when compared with the number of Dynamic R-CNN, the F1-score of Faster R-CNN is nearly 90$\%$ while the one of Dynamic R-CNN reaches about 80$\%$ when they are both trained with $12$ epochs. Considering the Faster R-CNN with schedule 2x, it gives the same F1-score with Dynamic R-CNN 1x at the point of $12$ epochs, however,  the score is about $90\%$ at the point of $24$ epochs.  Besides that, it can be inferred from the figures of the embedded bounding box that with the same number of epochs ($12$ epochs), the Faster R-CNN model always provides better results than the Dynamic R-CNN, in spite of the fact that the difference is not large. When we increase the number of epochs to $24,$ we can observe that the F1-score of Faster R-CNN can reach the milestone of nearly $95\%.$\\
