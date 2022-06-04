@@ -1,5 +1,5 @@
 \section{Method}
-We use the Faster R-CNN model with ResNet50 as the backbone for our model. The Faster R-CNN is a real-time object detection model, which consists of $2$ modules. The first module of the Faster R-CNN model is a deep fully convolutional network that proposes regions. The second module is a detector that uses proposed regions from the first one \cite{f-rcnn}. This is a single, unified network for object detection. By using the recently popular terminology of neural networks as the 'attention' mechanisms, the Region Proposal Networks (RPN) tells the Fast R-CNN where to look.
+We use the Faster R-CNN model with ResNet50 as the backbone for our model. Moreover, the Feature Pyramid Network (FPN) module is used to improve our solution. The Faster R-CNN is a real-time object detection model, which consists of $2$ modules. The first module of the Faster R-CNN model is a deep fully convolutional network that proposes regions. The second module is a detector that uses proposed regions from the first one \cite{f-rcnn}. This is a single, unified network for object detection. By using the recently popular terminology of neural networks as the 'attention' mechanisms, the Region Proposal Networks (RPN) tells the Fast R-CNN where to look.
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=0.7]{faster-rcnn/faster-rcnn}}
@@ -23,8 +23,8 @@ An RPN takes an image as input and outputs a set of rectangular object proposals
 
 \textbf{Loss function:} From \cite{f-rcnn}, the loss function of the RPN is:
 $$\begin{gathered}
- L\left( {\left\{ {{p_i}} \right\},\left\{ {{t_i}} \right\}} \right) = \frac{1}{{{N_{cls}}}}\sum\limits_i {{L_{cls}}\left( {{p_i},p_i^*} \right)}  \hfill \\
-  + \lambda \frac{1}{{{N_{reg}}}}\sum\limits_i {p_i^*} {L_{reg}}\left( {{t_i},t_i^*} \right). \hfill \\
+L\left( {\left\{ {{p_i}} \right\},\left\{ {{t_i}} \right\}} \right) = \frac{1}{{{N_{cls}}}}\sum\limits_i {{L_{cls}}\left( {{p_i},p_i^*} \right)}  \hfill \\
+ + \lambda \frac{1}{{{N_{reg}}}}\sum\limits_i {p_i^*} {L_{reg}}\left( {{t_i},t_i^*} \right). \hfill \\
 \end{gathered} $$
 
 \subsection{Sharing Features for RPN and Fast R-CNN}
@@ -49,3 +49,10 @@ We can see that \cite{resnet-50}, in a ResNet50 architecture, there are:
 \item After that we do an average pool and end it with a fully connected layer containing $1000$ nodes and at the end a softmax function so this gives us $1$ layer.
 \end{itemize}
 There are $1 + 9 + 12 + 18 + 9 + 1 = 50$ layers in total.
+\subsection{Feature Pyramid Network}
+The Feature Pyramid Network (FPN) is used to address the problem of the large-scale span. The task of Mathematical Formulas Detection (MFD) contains a large number of extremely small formulas, which brings great challenges for us. As shown in figure \ref{fpn} \cite{1stprize}, for a single extremely small character formula, its short side is usually about $16$ pixels. We discover that for any layer of FPN, the limit of the detector is $3$ pixels, which means that if we use the default ($3$-$7$), the short side needs to be at least $24$ pixels to be detected. It can be seen clearly that there are many small embedded formulas that do not satisfy this condition. As a result, we have changed the selection of the FPN level to ($2$-$6$), so that our model can overcome this challenge.
+\begin{figure}[H]
+\centering{\includegraphics[scale=.5]{faster-rcnn/fpn}}
+\caption{The significance of FPN in the task of MFD. (a) Input size; (b): Corresponding size in P2, (c) Corresponding size in P3. Under some small cases, some positive samples will be missed}
+\label{fpn}
+\end{figure}
