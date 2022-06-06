@@ -1,0 +1,128 @@
+@article{1stprize,
+abstract = {In this technical report, we present our 1st place solution for the ICDAR 2021 competition on mathematical formula detection (MFD). The MFD task has three key challenges including a large scale span, large variation of the ratio between height and width, and rich character set and mathematical expressions. Considering these challenges, we used Generalized Focal Loss (GFL), an anchor-free method, instead of the anchor-based method, and prove the Adaptive Training Sampling Strategy (ATSS) and proper Feature Pyramid Network (FPN) can well solve the important issue of scale variation. Meanwhile, we also found some tricks, e.g., Deformable Convolution Network (DCN), SyncBN, and Weighted Box Fusion (WBF), were effective in MFD task. Our proposed method ranked 1st in the final 15 teams.},
+archivePrefix = {arXiv},
+arxivId = {2107.05534},
+author = {Zhong, Yuxiang and Qi, Xianbiao and Li, Shanjun and Gu, Dengyi and Chen, Yihao and Ning, Peiyang and Xiao, Rong},
+eprint = {2107.05534},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/2107.05534.pdf:pdf},
+pages = {1--8},
+title = {{1st Place Solution for ICDAR 2021 Competition on Mathematical Formula Detection}},
+url = {http://arxiv.org/abs/2107.05534},
+year = {2021}
+}
+
+@article{f-rcnn,
+abstract = {State-of-the-art object detection networks depend on region proposal algorithms to hypothesize object locations. Advances like SPPnet [1] and Fast R-CNN [2] have reduced the running time of these detection networks, exposing region proposal computation as a bottleneck. In this work, we introduce a Region Proposal Network (RPN) that shares full-image convolutional features with the detection network, thus enabling nearly cost-free region proposals. An RPN is a fully convolutional network that simultaneously predicts object bounds and objectness scores at each position. The RPN is trained end-to-end to generate high-quality region proposals, which are used by Fast R-CNN for detection. We further merge RPN and Fast R-CNN into a single network by sharing their convolutional features - using the recently popular terminology of neural networks with 'attention' mechanisms, the RPN component tells the unified network where to look. For the very deep VGG-16 model [3], our detection system has a frame rate of 5 fps (including all steps) on a GPU, while achieving state-of-the-art object detection accuracy on PASCAL VOC 2007, 2012, and MS COCO datasets with only 300 proposals per image. In ILSVRC and COCO 2015 competitions, Faster R-CNN and RPN are the foundations of the 1st-place winning entries in several tracks. Code has been made publicly available.},
+archivePrefix = {arXiv},
+arxivId = {1506.01497},
+author = {Ren, Shaoqing and He, Kaiming and Girshick, Ross and Sun, Jian},
+doi = {10.1109/TPAMI.2016.2577031},
+eprint = {1506.01497},
+file = {:F\:/Downloads/Documents/1506.01497.pdf:pdf},
+issn = {01628828},
+journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+keywords = {Object detection,convolutional neural network,region proposal},
+number = {6},
+pages = {1137--1149},
+pmid = {27295650},
+title = {{Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks}},
+volume = {39},
+year = {2017}
+}
+
+@misc{resnet-50,
+author = {Kaushik, Aakash},
+title = {{Understanding ResNet50 architecture}},
+url = {https://iq.opengenus.org/resnet50-architecture/}
+}
+
+@article{Chan2020,
+abstract = {Offline handwritten mathematical expression recognition is often considered much harder than its online counterpart due to the absence of temporal information. In order to take advantage of the more mature methods for online recognition and save resources, an oversegmentation approach is proposed to recover strokes from textual bitmap images automatically. The proposed algorithm first breaks down the skeleton of a binarized image into junctions and segments, then segments are merged to form strokes, finally stroke order is normalized by using recursive projection and topological sort. Good offline accuracy was obtained in combination with ordinary online recognizers, which were not specially designed for extracted strokes. Given a ready-made state-of-the-art online handwritten mathematical expression recognizer, the proposed procedure correctly recognized $58.22\%$, $65.65\%$, and $65.22\%$ of the offline formulas rendered from the datasets of the Competitions on Recognition of Online Handwritten Mathematical Expressions (CROHME) in 2014, 2016, and 2019 respectively. Furthermore, given a trainable online recognition system, retraining it with extracted strokes resulted in an offline recognizer with the same level of accuracy.On the other hand, the speed of the entire pipeline was fast enough to facilitate on-device recognition on mobile phones with limited resources. To conclude, stroke extraction provides an attractive way to build optical character recognition software.  },
+archivePrefix = {arXiv},
+arxivId = {1905.06749},
+author = {Chan, Chungkwong},
+doi = {10.1109/ACCESS.2020.2984627},
+eprint = {1905.06749},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/1905.06749.pdf:pdf},
+issn = {21693536},
+journal = {IEEE Access},
+keywords = {Character recognition,feature extraction,offline handwritten mathematical expression recogn,optical character recognition software,stroke extraction},
+pages = {61565--61575},
+title = {{Stroke Extraction for Offline Handwritten Mathematical Expression Recognition}},
+volume = {8},
+year = {2020}
+}
+
+@article{Wang2021,
+abstract = {In this paper, we propose a deep neural network model with an encoder–decoder architecture that translates images of math formulas into their LaTeX markup sequences. The encoder is a convolutional neural network that transforms images into a group of feature maps. To better capture the spatial relationships of math symbols, the feature maps are augmented with 2D positional encoding before being unfolded into a vector. The decoder is a stacked bidirectional long short-term memory model integrated with the soft attention mechanism, which works as a language model to translate the encoder output into a sequence of LaTeX tokens. The neural network is trained in two steps. The first step is token-level training using the maximum likelihood estimation as the objective function. At completion of the token-level training, the sequence-level training objective function is employed to optimize the overall model based on the policy gradient algorithm from reinforcement learning. Our design also overcomes the exposure bias problem by closing the feedback loop in the decoder during sequence-level training, i.e., feeding in the predicted token instead of the ground truth token at every time step. The model is trained and evaluated on the IM2LATEX-100 K dataset and shows state-of-the-art performance on both sequence-based and image-based evaluation metrics.},
+archivePrefix = {arXiv},
+arxivId = {1908.11415},
+author = {Wang, Zelun and Liu, Jyh Charn},
+doi = {10.1007/s10032-020-00360-2},
+eprint = {1908.11415},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/s10032-020-00360-2.pdf:pdf},
+issn = {14332825},
+journal = {International Journal on Document Analysis and Recognition},
+keywords = {Deep learning,Encoder–decoder,Image to \LaTeX,Math formulas,Reinforcement learning,Seq2seq model},
+number = {1-2},
+pages = {63--75},
+publisher = {Springer Berlin Heidelberg},
+title = {{Translating math formula images to \LaTeX sequences using deep neural networks with sequence-level training}},
+volume = {24},
+year = {2021}
+}
+
+@article{Zhang2018,
+abstract = {Handwritten mathematical expression recognition is a challenging problem due to the complicated two-dimensional structures, ambiguous handwriting input and variant scales of handwritten math symbols. To settle this problem, recently we propose the attention based encoder-decoder model that recognizes mathematical expression images from two-dimensional layouts to one-dimensional LaTeX strings. In this study, we improve the encoder by employing densely connected convolutional networks as they can strengthen feature extraction and facilitate gradient propagation especially on a small training set. We also present a novel multi-scale attention model which is employed to deal with the recognition of math symbols in different scales and restore the fine-grained details dropped by pooling operations. Validated on the CROHME competition task, the proposed method significantly outperforms the state-of-the-art methods with an expression recognition accuracy of $52.8\%$ on CROHME 2014 and $50.1\%$ on CROHME 2016, by only using the official training dataset.},
+archivePrefix = {arXiv},
+arxivId = {1801.03530},
+author = {Zhang, Jianshu and Du, Jun and Dai, Lirong},
+doi = {10.1109/ICPR.2018.8546031},
+eprint = {1801.03530},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/1801.03530.pdf:pdf},
+isbn = {9781538637883},
+issn = {10514651},
+journal = {Proceedings - International Conference on Pattern Recognition},
+pages = {2245--2250},
+title = {{Multi-Scale Attention with Dense Encoder for Handwritten Mathematical Expression Recognition}},
+volume = {2018-Augus},
+year = {2018}
+}
+
+@article{Mali2020,
+abstract = {We introduce the Scanning Single Shot Detector (ScanSSD) for locating math formulas offset from text and embedded in textlines. ScanSSD uses only visual features for detection: no formatting or typesetting information such as layout, font, or character labels are employed. Given a 600 dpi document page image, a Single Shot Detector (SSD) locates formulas at multiple scales using sliding windows, after which candidate detections are pooled to obtain page-level results. For our experiments we use the TFD-ICDAR2019v2 dataset, a modification of the GTDB scanned math article collection. ScanSSD detects characters in formulas with high accuracy, obtaining a 0.926 f-score, and detects formulas with high recall overall. Detection errors are largely minor, such as splitting formulas at large whitespace gaps (e.g., for variable constraints) and merging formulas on adjacent textlines. Formula detection f-scores of 0.796 (IOU $\geq0.5$) and 0.733 (IOU $\ge 0.75$) are obtained. Our data, evaluation tools, and code are publicly available.},
+archivePrefix = {arXiv},
+arxivId = {2003.08005},
+author = {Mali, Parag and Kukkadapu, Puneeth and Mahdavi, Mahshad and Zanibbi, Richard},
+eprint = {2003.08005},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/2003.08005.pdf:pdf},
+title = {{ScanSSD: Scanning Single Shot Detector for Mathematical Formulas in PDF Document Images}},
+url = {http://arxiv.org/abs/2003.08005},
+year = {2020}
+}
+
+@article{Borus2017,
+author = {Schester, Amit and Borus, Norah and Bakst, William},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/5241761.pdf:pdf},
+title = {{Converting Handwritten Mathematical Expressions into \LaTeX}},
+year = {2017}
+}
+
+@article{Ma2021,
+abstract = {Collaborative editing questions and answers plays an important role in quality control of Mathematics StackExchange which is a math Q&A Site. Our study of post edits in Mathematics Stack Exchange shows that there is a large number of math-related edits about latexifying formulas, revising LaTeX and converting the blurred math formula screenshots to LaTeX sequence. Despite its importance, manually editing one math-related post especially those with complex mathematical formulas is time-consuming and error-prone even for experienced users. To assist post owners and editors to do this editing, we have developed an edit-assistance tool, MathLatexEdit for formula latexification, LaTeX revision and screenshot transcription. We formulate this formula editing task as a translation problem, in which an original post is translated to a revised post. MathLatexEdit implements a deep learning based approach including two encoder-decoder models for textual and visual LaTeX edit recommendation with math-specific inference. The two models are trained on large-scale historical original-edited post pairs and synthesized screenshot-formula pairs. Our evaluation of MathLatexEdit not only demonstrates the accuracy of our model, but also the usefulness of MathLatexEdit in editing real-world posts which are accepted in Mathematics Stack Exchange.},
+archivePrefix = {arXiv},
+arxivId = {arXiv:2109.09343v1},
+author = {Ma, Suyu and Chen, Chunyang and Khalajzadeh, Hourieh and Grundy, John},
+doi = {10.1145/3479547},
+eprint = {arXiv:2109.09343v1},
+file = {:F\:/GitHub/HCMUS-Research-Methods/References/Aritcles/2109.09343.pdf:pdf},
+issn = {25730142},
+journal = {Proceedings of the ACM on Human-Computer Interaction},
+keywords = {Q&A sites,collaborative editing,deep learning,latex,math},
+number = {CSCW2},
+publisher = {Association for Computing Machinery},
+title = {{Latexify Math: Mathematical Formula Markup Revision to Assist Collaborative Editing in Math Q \& A Sites}},
+volume = {5},
+year = {2021}
+}
+
