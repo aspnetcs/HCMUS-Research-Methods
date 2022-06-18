@@ -32,12 +32,141 @@ In the Faster R-CNN model, they use a 4-step training algorithm to learn shared 
 
 \subsection{ResNet50}
 ResNet50 is a variant of the ResNet model, consisting of $48$ convolution layers with $1$ MaxPool and $1$ Average Pool layer. It has $3.8 \times 10^9$ floating points operations. The ResNet50 is a widespread ResNet model. \\
-Figure \ref{resnet50} shows the architecture of the ResNet50.
-\begin{strip} % <--- defined in "cuted"
-\includegraphics[width=\linewidth]{faster-rcnn/resnet50}
-\captionof{figure}{ResNet50 architecture}
-\label{resnet50}
-\end{strip}
+\begin{table*}
+\caption{\label{resnet50} ResNet50 architecture}
+\begin{tabularx}{\textwidth}{|c|c|c|c|c|c|c|}
+\hline
+layer name & output size      & \multicolumn{1}{c|}{18-layer}                                                                                                                                                                                                                                                                                                          & \multicolumn{1}{c|}{34-layer}                                                                                                                                                                                                                                                                                                          & \multicolumn{1}{c|}{50-layer}                                                                                                                                                                                                                                                                                                                                                                                & \multicolumn{1}{c|}{101-layer}                                                                                                                                                                                                                                                                                                                                                                               & 152-layer                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
+conv1      & $112 \times 112$ & \multicolumn{5}{c|}{$7 \times 7,$ 64, stride 2}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+conv2$\_$x & $56 \times 56$   & 
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,64} \\ 
+
+  {3 \times 3,64} 
+
+\end{array}} \right] \times 2$ & 
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,64} \\ 
+
+  {3 \times 3,64} 
+
+\end{array}} \right] \times 3$ & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,64} \\ 
+  {3 \times 3,64} \\ 
+  {1 \times 1,256} 
+\end{array}} \right] \times 3$ & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,64} \\ 
+  {3 \times 3,64} \\ 
+  {1 \times 1,256} 
+\end{array}} \right] \times 3$  & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,64} \\ 
+  {3 \times 3,64} \\ 
+  {1 \times 1,256} 
+\end{array}} \right] \times 3$ 
+\\ \hline
+conv3$\_$x  & $28 \times 28$ & 
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,128} \\ 
+
+  {3 \times 3,128} 
+
+\end{array}} \right] \times 2$ & 
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,128} \\ 
+
+  {3 \times 3,128} 
+
+\end{array}} \right] \times 4$ & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,128} \\ 
+  {3 \times 3,128} \\ 
+  {1 \times 1,512} 
+\end{array}} \right] \times 4$ &
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,128} \\ 
+  {3 \times 3,128} \\ 
+  {1 \times 1,512} 
+\end{array}} \right] \times 4$  &
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,128} \\ 
+  {3 \times 3,128} \\ 
+  {1 \times 1,512} 
+\end{array}} \right] \times 8$                                                                                                                                                                                                                                                                                                                                                                                         \\ \hline
+conv4$\_$x & $14 \times 14$ &
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,256} \\ 
+
+  {3 \times 3,256} 
+
+\end{array}} \right] \times 2$  &
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,256} \\ 
+
+  {3 \times 3,256} 
+
+\end{array}} \right] \times 6$  & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,256} \\ 
+  {3 \times 3,256} \\ 
+  {1 \times 1,1024} 
+\end{array}} \right] \times 6$ & 
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,256} \\ 
+  {3 \times 3,256} \\ 
+  {1 \times 1,1024} 
+\end{array}} \right] \times 23$ &                                                                                                                                                                                                                                                                                                                                                                                
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,256} \\ 
+  {3 \times 3,256} \\ 
+  {1 \times 1,1024} 
+\end{array}} \right] \times 36$         
+\\ \hline
+conv5$\_$x & $7 \times 7$ & 
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,512} \\ 
+
+  {3 \times 3,512} 
+
+\end{array}} \right] \times 2$ &
+$\left[ {\begin{array}{*{20}{c}}
+
+  {3 \times 3,512} \\ 
+
+  {3 \times 3,512} 
+
+\end{array}} \right] \times 6$  &
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,512} \\ 
+  {3 \times 3,512} \\ 
+  {1 \times 1,2048} 
+\end{array}} \right] \times 3$  &
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,512} \\ 
+  {3 \times 3,512} \\ 
+  {1 \times 1,2048} 
+\end{array}} \right] \times 3$  &                                                                                                                                                                                                                                                                                                                                                                                        
+$\left[ {\begin{array}{*{20}{c}}
+  {1 \times 1,512} \\ 
+  {3 \times 3,512} \\ 
+  {1 \times 1,2048} 
+\end{array}} \right] \times 3$ 
+\\
+\hline
+\multicolumn{1}{|c|}{} & $1 \times 1$ & \multicolumn{5}{c|}{average pool, 1000-d fc, softmax}                                                                                                                                            \\ \hline
+\multicolumn{2}{|c|}{FLOPs}           & \multicolumn{1}{c|}{$1.8 \times {10^9}$} & \multicolumn{1}{c|}{$3.6 \times {10^9}$} & \multicolumn{1}{c|}{$3.8 \times {10^9}$} & \multicolumn{1}{c|}{$7.6 \times {10^9}$} & $11.3 \times {10^9}$ \\ \hline
+\end{tabularx}
+\end{table*}
+Table \ref{resnet50} shows the architecture of the ResNet50.
 We can see that \cite{resnet-50}, in a ResNet50 architecture, there are:
 \begin{itemize}
 \item A convolution with a kernel size of $7 \times 7$ and $64$ different kernels all with a stride of size $2$ there is $1$ layer.

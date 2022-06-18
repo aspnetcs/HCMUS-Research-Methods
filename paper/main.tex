@@ -6,6 +6,9 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
+\usepackage{tabularx,booktabs}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % centered version of "X" type
+\setlength{\extrarowheight}{1pt}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{graphicx}
@@ -72,7 +75,21 @@ Ho Chi Minh City, Vietnam \\
 \textit{University of Science, VNU$-$HCM}\\
 Ho Chi Minh City, Vietnam \\
 nhdang@selab.hcmus.edu.vn}
+\and
+\IEEEauthorblockN{Minh-Triet Tran}
+\IEEEauthorblockA{\textit{Faculty of Information Technology} \\
+\textit{University of Science, VNU$-$HCM}\\
+Ho Chi Minh City, Vietnam \\
+tmtriet@fit.hcmus.edu.vn}
+\and
+\IEEEauthorblockN{Quan Vu Hai}
+\IEEEauthorblockA{\textit{} \\
+\textit{Vietnam National University HCM}\\
+Ho Chi Minh City, Vietnam \\
+vhquan@vnuhcm.edu.vn}
 }
+
+
 
 
 \maketitle
@@ -104,12 +121,8 @@ Faster R-CNN
 % experiments
 \input{experiments}
 
-% future works
-\section{Future Works}
-%\input{future_works}
-
-% conclusion
-\section{Conclusion}
+% conclusion and future works
+\section{Conclusion and Future Work}
 %\input{conclusion}
 
 % acknowledgements
