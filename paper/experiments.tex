@@ -21,7 +21,7 @@ Our data is from the \href{https://zenodo.org/record/4757865}{IBEM dataset}. Thi
 \item Ts11: $329$ pages.
 \end{itemize}
 Our experiment uses Tr01, Tr10, Ts01 for training, Va01 for validation, and Ts11 for testing with $2178$ pages in total ($ \sim 26.33\% $ of the original dataset), and an approximate ratio of $4.47:1.16:1.$ The reason for this small subset is for the purpose of evaluating the ability of the model on small subsets, and the performance it gives (F1-score) through time (minutes).\\
-The numbers of embedded and isolated bounding boxes in each set are:
+The numbers of embedded and isolated bounding boxes in each set (figure \ref{numbers})  are:
 \begin{itemize}
 \item \textbf{Training:} $31074$ embedded bounding boxes, $6617$ isolated bounding boxes.
 \item \textbf{Validation:} $6595$ embedded bounding boxes, $1346$ isolated bounding boxes.
@@ -30,6 +30,7 @@ The numbers of embedded and isolated bounding boxes in each set are:
 \begin{figure}[H]
 \centering{\includegraphics[scale=0.5]{dataset/bounding_box}}
 \caption{The numbers of embedded and isolated bounding boxes}
+\label{numbers}
 \end{figure}
 
 \subsection{Implementation Details}
