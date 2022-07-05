@@ -28,7 +28,7 @@ The numbers of embedded and isolated bounding boxes in each set (figure \ref{num
 \item \textbf{Test}: $5702$ embedded bounding boxes, $1074$ isolated bounding boxes.
 \end{itemize}
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.5]{dataset/bounding_box}}
+\centering{\includegraphics[scale=0.5]{eps/boxes}}
 \caption{The numbers of embedded and isolated bounding boxes}
 \label{numbers}
 \end{figure}
@@ -40,33 +40,33 @@ We have tested on 3 configs: Faster R-CNN with schedule 1x ($12$ epochs), \href{
 The results are given in the figures below. 
 %\newpage
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.7]{loss/v2_1x}}
+\centering{\includegraphics[scale=0.6]{eps/faster-1x.eps}}
 \caption{Faster R-CNN with schedule 1x}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.7]{loss/v5_1x}}
+\centering{\includegraphics[scale=0.6]{eps/dynamic-1x.eps}}
 \caption{Dynamic R-CNN with schedule 1x}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.7]{loss/v2_2x}}
+\centering{\includegraphics[scale=0.6]{eps/faster-2x.eps}}
 \caption{Faster R-CNN with schedule 2x}
 \end{figure}
 
 The F1-score gained from the model is as follow.
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.4]{f1-score/whole}}
+\centering{\includegraphics[scale=0.35]{eps/f1-whole.eps}}
 \caption{F1-score on whole system}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.4]{f1-score/isolated}}
+\centering{\includegraphics[scale=0.35]{eps/f1-isolated.eps}}
 \caption{F1-score with isolated bounding box}
 \end{figure}
 
 \begin{figure}[H]
-\centering{\includegraphics[scale=0.4]{f1-score/embedded}}
+\centering{\includegraphics[scale=0.35]{eps/f1-embedded.eps}}
 \caption{F1-score with embedded bounding box}
 \end{figure}
 %\newpage

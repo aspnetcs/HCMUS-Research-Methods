@@ -3,21 +3,21 @@ We use the Faster R-CNN model with ResNet50 as the backbone for our model. Moreo
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=0.7]{faster-rcnn/faster-rcnn}}
-\caption{Faster R-CNN is a single, unified network for object detection. The RPN module plays the role of the 'attention' of this network.}
+\caption{Faster R-CNN is a single, unified network for object detection. The RPN module plays the role of the 'attention' of this network. \cite{f-rcnn}}
 \end{figure}
-
+\newpage
 \subsection{Region Proposal Networks}
 An RPN takes an image as input and outputs a set of rectangular object proposals each with an objectness score, which measures membership to a set of object classes. This process is modeled with a fully convolutional network. The structure of the RPN is shown in Figure \ref{rpn}, and figure \ref{rpn_example} shows some examples of object detection using RPN proposals, on the PASCAL VOC 2007 test. The method introduced in  \cite{f-rcnn} detects objects in a wide range of scales and aspect ratios.
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=.8]{faster-rcnn/rpn}}
-\caption{Region Proposal Network (RPN)}
+\caption{Region Proposal Network (RPN) \cite{f-rcnn}}
 \label{rpn}
 \end{figure}
 
 \begin{figure}[H]
 \centering{\includegraphics[scale=.8]{faster-rcnn/rpn_example}}
-\caption{Examples of object detection using RPN proposals}
+\caption{Examples of object detection using RPN proposals \cite{f-rcnn}}
 \label{rpn_example}
 \end{figure}
 
@@ -28,12 +28,12 @@ L\left( {\left\{ {{p_i}} \right\},\left\{ {{t_i}} \right\}} \right) = \frac{1}{{
 \end{gathered} $$
 
 \subsection{Sharing Features for RPN and Fast R-CNN}
-In the Faster R-CNN model, they use a 4-step training algorithm to learn shared features via alternating optimization. In the first step, the RPN is trained end-to-end by back-propagation and stochastic gradient descent (SGD). In the second step, they train a separate detection network by Fast R-CNN. In the third step, they use the detector network to initialize RPN training, and they let the two networks share convolutional layers. Finally, they keep the shared convolutional layers fixed, they fine-tune the unique layers of Fast R-CNN.
+In the Faster R-CNN model, they use a 4-step training algorithm to learn shared features via alternating optimization \cite{f-rcnn}. In the first step, the RPN is trained end-to-end by back-propagation and stochastic gradient descent (SGD). In the second step, they train a separate detection network by Fast R-CNN. In the third step, they use the detector network to initialize RPN training, and they let the two networks share convolutional layers. Finally, they keep the shared convolutional layers fixed, they fine-tune the unique layers of Fast R-CNN.
 
 \subsection{ResNet50}
 ResNet50 is a variant of the ResNet model, consisting of $48$ convolution layers with $1$ MaxPool and $1$ Average Pool layer. It has $3.8 \times 10^9$ floating points operations. The ResNet50 is a widespread ResNet model. \\
 \begin{table*}
-\caption{\label{resnet50} ResNet50 architecture}
+\caption{\label{resnet50} ResNet50 architecture \cite{resnet-50}}
 \begin{tabularx}{\textwidth}{|c|c|c|c|c|c|c|}
 \hline
 layer name & output size      & \multicolumn{1}{c|}{18-layer}                                                                                                                                                                                                                                                                                                          & \multicolumn{1}{c|}{34-layer}                                                                                                                                                                                                                                                                                                          & \multicolumn{1}{c|}{50-layer}                                                                                                                                                                                                                                                                                                                                                                                & \multicolumn{1}{c|}{101-layer}                                                                                                                                                                                                                                                                                                                                                                               & 152-layer                                                                                                                                                                                                                                                                                                                                                                               \\ \hline
@@ -182,6 +182,6 @@ There are $1 + 9 + 12 + 18 + 9 + 1 = 50$ layers in total.
 The Feature Pyramid Network (FPN) is used to address the problem of the large-scale span. The task of Mathematical Formulas Detection (MFD) contains a large number of extremely small formulas, which brings great challenges for us. As shown in figure \ref{fpn} \cite{1stprize}, for a single extremely small character formula, its short side is usually about $16$ pixels. We discover that for any layer of FPN, the limit of the detector is $3$ pixels, which means that if we use the default ($3$-$7$), the short side needs to be at least $24$ pixels to be detected. It can be seen clearly that there are many small embedded formulas that do not satisfy this condition. As a result, we have changed the selection of the FPN level to ($2$-$6$), so that our model can overcome this challenge.
 \begin{figure}[H]
 \centering{\includegraphics[scale=.5]{faster-rcnn/fpn}}
-\caption{The significance of FPN in the task of MFD. (a) Input size; (b): Corresponding size in P2, (c) Corresponding size in P3. Under some small cases, some positive samples will be missed}
+\caption{The significance of FPN in the task of MFD. (a) Input size; (b): Corresponding size in P2, (c) Corresponding size in P3. Under some small cases, some positive samples will be missed \cite{1stprize}}
 \label{fpn}
 \end{figure}
